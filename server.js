@@ -70,6 +70,20 @@ app.get("/api/quotes/:id", (req, res) => {
     );
   });
 
+  app.delete("/api/quotes/:id", (req, res) => {
+    const quoteId = req.params.id;
+    pool.query("DELETE FROM quotes WHERE id = $1", [quoteId], (err, result) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Internal server error");
+      } else if (result.rowCount === 0) {
+        res.status(404).send(`Quote with ID ${quoteId} not found`);
+      } else {
+        res.status(204).send(`Quote was successfully deleted`);
+      }
+    });
+  });
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}...`);
 });

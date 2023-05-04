@@ -14,3 +14,6 @@ Content-Type: application/json
 {
   "quote": "this is a test quote"
 }
+
+###
+DELETE http://localhost:3000/api/quotes/1
