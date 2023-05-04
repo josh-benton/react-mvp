@@ -3,3 +3,6 @@ GET http://localhost:3000/test
 
 ###
 GET http://localhost:3000/api/quotes
+
+###
+GET http://localhost:3000/api/quotes/1

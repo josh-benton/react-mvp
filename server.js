@@ -28,6 +28,22 @@ app.get("/api/quotes", (req, res) => {
   });
 });
 
+app.get("/api/quotes/:id", (req, res) => {
+    const taskId = req.params.id;
+    pool.query(
+      "SELECT * FROM quotes WHERE id = $1",
+      [taskId],
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send("Internal server error");
+        } else {
+          res.send(result.rows);
+        }
+      }
+    );
+  });
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}...`);
 });
