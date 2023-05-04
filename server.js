@@ -53,6 +53,23 @@ app.get("/api/quotes/:id", (req, res) => {
     );
   });
 
+  app.post("/api/quotes", (req, res) => {
+    console.log(req.body);
+    const { quote } = req.body;
+    pool.query(
+      "INSERT INTO quotes (quote) VALUES ($1) RETURNING *",
+      [quote],
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          res.status(500).json({ error: "Internal server error" });
+        } else {
+          res.status(201).json(result.rows[0]);
+        }
+      }
+    );
+  });
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}...`);
 });
