@@ -1,5 +1,6 @@
 import express from "express";
 import process from "process";
+import cors from 'cors';
 const app = express();
 const PORT = process.env.PORT || 3000;
 import { config } from "dotenv";
@@ -7,11 +8,19 @@ config();
 import pg from "pg";
 const { Pool } = pg;
 
+
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
 app.use(express.json());
+
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type']
+  }));
 
 app.get("/test", (req, res) => {
   res.json("Hello World!");

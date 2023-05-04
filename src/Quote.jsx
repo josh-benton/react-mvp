@@ -1,16 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Quote() {
-  const [quote, setQuote] = useState('');
+  const [quotes, setQuotes] = useState([]);
 
   function fetchQuote() {
     fetch('http://localhost:3000/api/quotes')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => {
-        const randomIndex = Math.floor(Math.random() * data.length);
-        setQuote(data[randomIndex]);
+        console.log(data);
+        setQuotes(data);
+      })
+      .catch(error => {
+        console.log('There was a problem with the fetch operation:', error);
       });
   }
+  
 
   useEffect(() => {
     fetchQuote();
@@ -18,8 +28,10 @@ function Quote() {
 
   return (
     <div>
-      <p>{quote}</p>
-      <button onClick={() => fetchQuote()}>New Quote</button>
+      {console.log(quotes)}
+      {quotes.map((quote) => (
+        <p key={quote.id}>{quote.text}</p>
+      ))}
     </div>
   );
 }
