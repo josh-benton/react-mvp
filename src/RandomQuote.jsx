@@ -13,7 +13,7 @@ function RandomQuote({ quotes }) {
     <div>
       <h2>Random Quote:</h2>
       <p>{quote}</p>
-      <button onClick={handleClick}>Get Random Quote</button>
+      <button className="random-button" onClick={handleClick}>Get Random Quote</button>
     </div>
   );
 }

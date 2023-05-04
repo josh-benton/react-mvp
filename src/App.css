@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.RandomQuote {
+  background-color: #f3f7f9;
+  color: #333;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 600px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px; /* set a fixed height */
+}
+
+.RandomQuote p {
+  word-wrap: break-word;
+}
+
+.random-button {
+  margin-top: 20px;
+}
