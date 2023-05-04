@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-function Quote() {
+function RandomQuote() {
   const [quotes, setQuotes] = useState([]);
+  const [randomQuote, setRandomQuote] = useState("");
 
   async function fetchQuote() {
     try {
@@ -21,18 +22,22 @@ function Quote() {
     fetchQuote();
   }, []);
 
-  if (quotes.length === 0) {
+  useEffect(() => {
+    if (quotes.length > 0) {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      setRandomQuote(quotes[randomIndex].quote);
+    }
+  }, [quotes]);
+
+  if (randomQuote === "") {
     return <p>Loading...</p>;
   }
 
   return (
     <div>
-      {console.log(quotes)}
-      {quotes.map((quote) => (
-        <p key={quote.id}>{quote.quote}</p>
-      ))}
+      <p>{randomQuote}</p>
     </div>
   );
 }
 
-export default Quote;
+export default RandomQuote;
