@@ -3,7 +3,6 @@ import RandomQuote from "./RandomQuote";
 import QuotesList from "./QuotesList";
 import "./App.css";
 
-
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,6 +12,7 @@ function App() {
 
   return (
     <div className="App">
+      <div className="banner">Random Quote Generator</div>
       <QuotesList handleLoading={handleLoading} />
       {!isLoading && <RandomQuote />}
     </div>
