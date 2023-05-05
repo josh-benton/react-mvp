@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function PostQuote() {
+function PostQuote({ handleNewQuote }) {
   const [quote, setQuote] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -21,6 +21,7 @@ function PostQuote() {
       console.log(data);
       setQuote("");
       setSuccessMessage("Quote added successfully!");
+      handleNewQuote(data);
     } catch (error) {
       console.log("There was a problem with the fetch operation:", error);
     }
@@ -44,5 +45,3 @@ function PostQuote() {
 }
 
 export default PostQuote;
-
-

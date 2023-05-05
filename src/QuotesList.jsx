@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RandomQuote from "./RandomQuote";
+import PostQuote from "./PostQuote";
 
 export default function QuotesList() {
   const [quotes, setQuotes] = useState([]);
@@ -27,12 +28,14 @@ export default function QuotesList() {
     setQuotes(updatedQuotes);
   }
 
+  function handleNewQuote(newQuote) {
+    setQuotes([...quotes, newQuote]);
+  }
+
   return (
     <div>
       <RandomQuote quotes={quotes} handleDelete={handleDelete} />
+      <PostQuote handleNewQuote={handleNewQuote} />
     </div>
   );
 }
-
-
-
