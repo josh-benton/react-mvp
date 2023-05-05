@@ -34,10 +34,9 @@ function PostQuote() {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          New Quote:
-          <input type="text" value={quote} onChange={handleChange} />
+          <input type="text" placeholder="Add a new quote" value={quote} onChange={handleChange} />
         </label>
-        <button type="submit">Add Quote</button>
+        <button className="post-quote-btn" type="submit">Add Quote</button>
       </form>
       {successMessage && <p>{successMessage}</p>}
     </div>

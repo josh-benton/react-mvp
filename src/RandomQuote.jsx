@@ -21,17 +21,15 @@ function RandomQuote({ quotes, handleDelete }) {
 
   return (
     <div>
-      <h2>Random Quote:</h2>
-      <p>{quote}</p>
-      <button className="random-button" onClick={handleClick}>
-        Get Random Quote
-      </button>
-      {id && <DeleteQuote id={id} handleDeleteClick={handleDeleteClick} />}
+      <p className="quote-text">{quote}</p>
+      <div className="random-quote-container">
+        <button className="random-button" onClick={handleClick}>
+          Get Random Quote
+        </button>
+        {id && <DeleteQuote id={id} handleDeleteClick={handleDeleteClick} />}
+      </div>
     </div>
   );
 }
 
 export default RandomQuote;
-
-
-

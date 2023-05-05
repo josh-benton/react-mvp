@@ -15,6 +15,6 @@ export default function DeleteQuote({ id, handleDeleteClick }) {
     }
   }
 
-  return <button onClick={handleDelete}>Delete Quote</button>;
+  return <button className="delete-quote-btn" onClick={handleDelete}>Delete Quote</button>;
 }
 

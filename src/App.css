@@ -1,28 +1,124 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.RandomQuote {
-  background-color: #f3f7f9;
-  color: #333;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-  max-width: 600px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 200px; /* set a fixed height */
-}
-
-.RandomQuote p {
-  word-wrap: break-word;
-}
-
-.random-button {
-  margin-top: 20px;
-}
+    background-color: #6a5acd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-top: 2rem;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  input {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  button {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    color: #fff;
+    background-color: #66bb6a;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #43a047;
+  }
+  
+  .random-quote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .quote-text {
+    font-family: "Satisfy", cursive;
+    font-size: x-large;
+    color: #f5deb3;
+  }
+  
+  .random-button {
+    background-color: #2196f3;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 1rem;
+  }
+  
+  .random-button:hover {
+    background-color: #1976d2;
+  }
+  
+  .delete-quote-btn {
+    background-color: #e57373;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-quote-btn:hover {
+    background-color: #c62828;
+  }
+  
+  .post-quote-btn {
+    background-color: #66bb6a;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .post-quote-btn:hover {
+    background-color: #43a047;
+  }
+  
+  .success-message {
+    color: #4caf50;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  
