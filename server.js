@@ -66,6 +66,24 @@ app.post("/api/quotes", (req, res) => {
   );
 });
 
+app.patch("/api/quotes/:id", (req, res) => {
+  const quoteId = req.params.id;
+  const { quote } = req.body;
+  const query =
+    "UPDATE quotes SET quote = COALESCE($1, quote) WHERE id = $2 RETURNING *";
+  const values = [quote || null, quoteId];
+  pool.query(query, values, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    } else if (result.rowCount === 0) {
+      res.status(404).send(`Quote with ID ${quoteId} not found`);
+    } else {
+      res.status(200).json(result.rows[0]);
+    }
+  });
+});
+
 app.delete("/api/quotes/:id", (req, res) => {
   const quoteId = req.params.id;
   pool.query("DELETE FROM quotes WHERE id = $1", [quoteId], (err, result) => {
