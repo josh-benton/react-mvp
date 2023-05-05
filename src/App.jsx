@@ -3,7 +3,7 @@ import RandomQuote from "./RandomQuote";
 import QuotesList from "./QuotesList";
 
 import "./App.css";
-import PostQuote from "../PostQuote";
+import PostQuote from "./PostQuote";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

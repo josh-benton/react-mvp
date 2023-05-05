@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function PostQuote() {
   const [quote, setQuote] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -18,6 +19,8 @@ function PostQuote() {
       }
       const data = await response.json();
       console.log(data);
+      setQuote("");
+      setSuccessMessage("Quote added successfully!");
     } catch (error) {
       console.log("There was a problem with the fetch operation:", error);
     }
@@ -28,14 +31,19 @@ function PostQuote() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        New Quote:
-        <input type="text" value={quote} onChange={handleChange} />
-      </label>
-      <button type="submit">Add Quote</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          New Quote:
+          <input type="text" value={quote} onChange={handleChange} />
+        </label>
+        <button type="submit">Add Quote</button>
+      </form>
+      {successMessage && <p>{successMessage}</p>}
+    </div>
   );
 }
 
 export default PostQuote;
+
+
