@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DeleteQuote from "./DeleteQuote";
 
-function RandomQuote({ quotes }) {
+function RandomQuote({ quotes, handleDelete }) {
   const [quote, setQuote] = useState("");
   const [id, setId] = useState("");
 
@@ -13,6 +13,12 @@ function RandomQuote({ quotes }) {
     setId(randomId);
   }
 
+  function handleDeleteClick() {
+    handleDelete(id);
+    setId("");
+    setQuote("");
+  }
+
   return (
     <div>
       <h2>Random Quote:</h2>
@@ -20,9 +26,10 @@ function RandomQuote({ quotes }) {
       <button className="random-button" onClick={handleClick}>
         Get Random Quote
       </button>
-      {id && <DeleteQuote id={id} />}
+      {id && <DeleteQuote id={id} handleDeleteClick={handleDeleteClick} />}
     </div>
   );
 }
 
 export default RandomQuote;
+

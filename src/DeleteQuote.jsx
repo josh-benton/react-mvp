@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function DeleteQuote({ id }) {
+export default function DeleteQuote({ id, handleDeleteClick }) {
   async function handleDelete() {
     try {
       const response = await fetch(`http://localhost:3000/api/quotes/${id}`, {
@@ -9,7 +9,7 @@ export default function DeleteQuote({ id }) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      // Handle successful deletion
+      handleDeleteClick();
     } catch (error) {
       console.log("There was a problem with the fetch operation:", error);
     }
@@ -17,3 +17,4 @@ export default function DeleteQuote({ id }) {
 
   return <button onClick={handleDelete}>Delete Quote</button>;
 }
+

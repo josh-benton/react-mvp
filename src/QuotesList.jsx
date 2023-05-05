@@ -22,9 +22,15 @@ export default function QuotesList() {
     fetchQuotes();
   }, []);
 
+  function handleDelete(id) {
+    const updatedQuotes = quotes.filter((quote) => quote.id !== id);
+    setQuotes(updatedQuotes);
+  }
+
   return (
     <div>
-      <RandomQuote quotes={quotes} />
+      <RandomQuote quotes={quotes} handleDelete={handleDelete} />
     </div>
   );
 }
+
